@@ -1,0 +1,186 @@
+{
+  "users": [
+    {
+      "name": "Arun Kumar",
+      "pin": "1111",
+      "balance": 45000,
+      "transactions": [
+        {
+          "id": "TXN101",
+          "type": "deposit",
+          "amount": 10000,
+          "date": "2026-03-31T10:00:00Z",
+          "balanceAfter": 50000
+        },
+        {
+          "id": "TXN102",
+          "type": "withdrawal",
+          "amount": 5000,
+          "date": "2026-03-31T11:00:00Z",
+          "balanceAfter": 45000
+        }
+      ]
+    },
+    {
+      "name": "Priya Sharma",
+      "pin": "2222",
+      "balance": 62000,
+      "transactions": [
+        {
+          "id": "TXN201",
+          "type": "withdrawal",
+          "amount": 2000,
+          "date": "2026-03-31T09:00:00Z",
+          "balanceAfter": 57000
+        },
+        {
+          "id": "TXN202",
+          "type": "deposit",
+          "amount": 5000,
+          "date": "2026-03-31T10:30:00Z",
+          "balanceAfter": 62000
+        }
+      ]
+    },
+    {
+      "name": "Rahul Verma",
+      "pin": "3333",
+      "balance": 30000,
+      "transactions": [
+        {
+          "id": "TXN301",
+          "type": "withdrawal",
+          "amount": 1000,
+          "date": "2026-03-31T12:00:00Z",
+          "balanceAfter": 32000
+        },
+        {
+          "id": "TXN302",
+          "type": "withdrawal",
+          "amount": 2000,
+          "date": "2026-03-31T13:00:00Z",
+          "balanceAfter": 30000
+        }
+      ]
+    },
+    {
+      "name": "Sneha Reddy",
+      "pin": "4444",
+      "balance": 75000,
+      "transactions": [
+        {
+          "id": "TXN401",
+          "type": "deposit",
+          "amount": 15000,
+          "date": "2026-03-31T14:00:00Z",
+          "balanceAfter": 78000
+        },
+        {
+          "id": "TXN402",
+          "type": "withdrawal",
+          "amount": 3000,
+          "date": "2026-03-31T15:00:00Z",
+          "balanceAfter": 75000
+        }
+      ]
+    },
+    {
+      "name": "Vikram Singh",
+      "pin": "5555",
+      "balance": 52000,
+      "transactions": [
+        {
+          "id": "TXN501",
+          "type": "withdrawal",
+          "amount": 7000,
+          "date": "2026-03-31T16:00:00Z",
+          "balanceAfter": 52000
+        }
+      ]
+    },
+    {
+      "name": "Anjali Patel",
+      "pin": "6666",
+      "balance": 41000,
+      "transactions": [
+        {
+          "id": "TXN601",
+          "type": "deposit",
+          "amount": 8000,
+          "date": "2026-03-31T17:00:00Z",
+          "balanceAfter": 41000
+        }
+      ]
+    },
+    {
+      "name": "Karthik Raj",
+      "pin": "7777",
+      "balance": 90000,
+      "transactions": [
+        {
+          "id": "TXN701",
+          "type": "withdrawal",
+          "amount": 10000,
+          "date": "2026-03-31T18:00:00Z",
+          "balanceAfter": 90000
+        }
+      ]
+    },
+    {
+      "name": "Meena Das",
+      "pin": "8888",
+      "balance": 28000,
+      "transactions": [
+        {
+          "id": "TXN801",
+          "type": "deposit",
+          "amount": 3000,
+          "date": "2026-03-31T19:00:00Z",
+          "balanceAfter": 28000
+        }
+      ]
+    },
+    {
+      "name": "Ravi Kumar",
+      "pin": "9999",
+      "balance": 64000,
+      "transactions": [
+        {
+          "id": "TXN901",
+          "type": "withdrawal",
+          "amount": 4000,
+          "date": "2026-03-31T08:00:00Z",
+          "balanceAfter": 64000
+        }
+      ]
+    },
+    {
+      "name": "John David",
+      "pin": "1234",
+      "balance": 45000,
+      "transactions": [
+        {
+          "id": "TXN1001",
+          "type": "deposit",
+          "amount": 5000,
+          "date": "2026-03-31T07:00:00Z",
+          "balanceAfter": 52000
+        },
+        {
+          "id": "TXN1002",
+          "type": "withdrawal",
+          "amount": 2000,
+          "date": "2026-03-31T07:30:00Z",
+          "balanceAfter": 50000
+        },
+        {
+          "id": "TXN1774969392184",
+          "type": "withdrawal",
+          "amount": 5000,
+          "date": "2026-03-31T15:03:12.184Z",
+          "balanceAfter": 45000
+        }
+      ]
+    }
+  ]
+}

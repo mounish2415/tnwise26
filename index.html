@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart ATM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="atm-machine">
+    <div class="atm-screen">
+        <div id="app-container">
+            
+            <!-- Screen 1: Language Selection -->
+            <div id="screen-language" class="screen active">
+                <h1>SELECT LANGUAGE</h1>
+                <div class="grid-buttons">
+                    <button class="btn" onclick="selectLanguage('en')">English</button>
+                    <button class="btn" onclick="selectLanguage('ta')">Tamil</button>
+                    <button class="btn" onclick="selectLanguage('hi')">Hindi</button>
+                    <button class="btn" onclick="selectLanguage('te')">Telugu</button>
+                    <button class="btn" onclick="selectLanguage('ml')">Malayalam</button>
+                    <button class="btn" onclick="selectLanguage('kn')">Kannada</button>
+                    <button class="btn" onclick="selectLanguage('fr')">French</button>
+                    <button class="btn" onclick="selectLanguage('es')">Spanish</button>
+                    <button class="btn" onclick="selectLanguage('de')">German</button>
+                    <button class="btn" onclick="selectLanguage('zh')">Chinese</button>
+                </div>
+            </div>
+
+            <!-- Screen 2: Welcome -->
+            <div id="screen-welcome" class="screen">
+                <h1 id="text-welcome">WELCOME TO SMART BANK</h1>
+                <p id="text-insert">Please insert your card to start</p>
+                <div class="card-slot cursor-pointer" onclick="insertCard()">
+                    <div class="card-indicator"></div>
+                    <span>INSERT CARD (CLICK)</span>
+                </div>
+            </div>
+
+            <!-- Screen 3: PIN Entry -->
+            <div id="screen-pin" class="screen">
+                <h2 id="text-enter-pin">ENTER PIN</h2>
+                <div class="pin-display" id="pin-display">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <p class="error-msg" id="pin-error"></p>
+                <div class="keypad">
+                    <button onclick="pressKey(1)">1</button>
+                    <button onclick="pressKey(2)">2</button>
+                    <button onclick="pressKey(3)">3</button>
+                    <button onclick="pressKey(4)">4</button>
+                    <button onclick="pressKey(5)">5</button>
+                    <button onclick="pressKey(6)">6</button>
+                    <button onclick="pressKey(7)">7</button>
+                    <button onclick="pressKey(8)">8</button>
+                    <button onclick="pressKey(9)">9</button>
+                    <button class="action-btn cancel" onclick="cancelPin()" id="btn-cancel">CANCEL</button>
+                    <button onclick="pressKey(0)">0</button>
+                    <button class="action-btn clear" onclick="clearPin()" id="btn-clear">CLEAR</button>
+                </div>
+            </div>
+
+            <!-- Screen 4: Main Menu -->
+            <div id="screen-menu" class="screen">
+                <h2 id="text-menu-title">SELECT OPERATION</h2>
+                <div class="menu-list">
+                    <button class="btn block" onclick="goTo('screen-withdraw')" id="btn-withdraw">Withdrawal</button>
+                    <button class="btn block" onclick="goTo('screen-deposit')" id="btn-deposit">Deposit</button>
+                    <button class="btn block" onclick="checkBalance()" id="btn-balance">Balance Enquiry</button>
+                    <button class="btn block" onclick="checkStatement()" id="btn-statement">Mini Statement</button>
+                    <button class="btn block danger" onclick="exitTransaction()" id="btn-exit">Exit</button>
+                </div>
+            </div>
+
+            <!-- Screen 5: Withdraw -->
+            <div id="screen-withdraw" class="screen">
+                <h2 id="text-withdraw">WITHDRAW CASH</h2>
+                <p id="text-multiples">Enter amount in multiples of 100</p>
+                <div class="input-display">₹<span id="withdraw-amount">0</span></div>
+                <p class="error-msg" id="withdraw-error"></p>
+                <div class="keypad small-keypad">
+                    <!-- Numbers 1-9 -->
+                    <button onclick="pressAmtKey('w', 1)">1</button><button onclick="pressAmtKey('w', 2)">2</button><button onclick="pressAmtKey('w', 3)">3</button>
+                    <button onclick="pressAmtKey('w', 4)">4</button><button onclick="pressAmtKey('w', 5)">5</button><button onclick="pressAmtKey('w', 6)">6</button>
+                    <button onclick="pressAmtKey('w', 7)">7</button><button onclick="pressAmtKey('w', 8)">8</button><button onclick="pressAmtKey('w', 9)">9</button>
+                    <button class="action-btn clear" onclick="clearAmt('w')">CLR</button><button onclick="pressAmtKey('w', 0)">0</button>
+                    <button class="action-btn enter" onclick="submitWithdraw()" id="btn-w-submit">ENTER</button>
+                </div>
+                <button class="btn block mt-2" onclick="goTo('screen-menu')" id="btn-w-back">Back</button>
+            </div>
+
+            <!-- Screen 6: Deposit -->
+            <div id="screen-deposit" class="screen">
+                <h2 id="text-deposit">DEPOSIT CASH</h2>
+                <p id="text-deposit-inst">Enter amount up to 2,00,000</p>
+                <div class="input-display">₹<span id="deposit-amount">0</span></div>
+                <p class="error-msg" id="deposit-error"></p>
+                <div class="keypad small-keypad">
+                     <button onclick="pressAmtKey('d', 1)">1</button><button onclick="pressAmtKey('d', 2)">2</button><button onclick="pressAmtKey('d', 3)">3</button>
+                     <button onclick="pressAmtKey('d', 4)">4</button><button onclick="pressAmtKey('d', 5)">5</button><button onclick="pressAmtKey('d', 6)">6</button>
+                     <button onclick="pressAmtKey('d', 7)">7</button><button onclick="pressAmtKey('d', 8)">8</button><button onclick="pressAmtKey('d', 9)">9</button>
+                     <button class="action-btn clear" onclick="clearAmt('d')">CLR</button><button onclick="pressAmtKey('d', 0)">0</button>
+                     <button class="action-btn enter" onclick="submitDeposit()" id="btn-d-submit">ENTER</button>
+                </div>
+                <button class="btn block mt-2" onclick="goTo('screen-menu')" id="btn-d-back">Back</button>
+            </div>
+
+            <!-- Screen 7: Balance -->
+            <div id="screen-balance" class="screen">
+                <h2 id="text-balance-title">AVAILABLE BALANCE</h2>
+                <div class="balance-display">
+                    ₹<span id="balance-value">0.00</span>
+                </div>
+                <div class="mt-4">
+                    <p id="text-another-txn">Do you want another transaction?</p>
+                    <div class="flex-row">
+                        <button class="btn flex-1" onclick="goTo('screen-menu')" id="btn-yes">Yes</button>
+                        <button class="btn danger flex-1" onclick="exitTransaction()" id="btn-no">No</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Screen 7b: Statement -->
+            <div id="screen-statement" class="screen">
+                <h2 id="text-statement-title">MINI STATEMENT</h2>
+                <div id="statement-list" class="statement-list">
+                    <!-- Transactions will be injected here -->
+                </div>
+                <button class="btn block mt-2" onclick="goTo('screen-menu')" id="btn-s-back">Back</button>
+            </div>
+
+            <!-- Screen 8: Success (Cash Dispense/Deposit Animation) -->
+            <div id="screen-success" class="screen text-center">
+                <h2 id="text-processing">Processing Transaction...</h2>
+                
+                <div class="cash-animation-area" id="cash-anim-area" style="display:none;">
+                    <div class="cash-slot"></div>
+                    <div class="money-bill bill-1">₹500</div>
+                    <div class="money-bill bill-2">₹500</div>
+                    <div class="money-bill bill-3">₹500</div>
+                </div>
+                
+                <h3 id="success-msg" class="success-msg mt-4"></h3>
+            </div>
+
+            <!-- Screen 9: Exit -->
+            <div id="screen-exit" class="screen text-center">
+                <h2 id="text-thank-you">THANK YOU FOR USING SMART BANK</h2>
+                <p id="text-collect-card" class="mt-2 pulse">Please collect your card</p>
+                <div class="card-slot out mt-4" onclick="takeCard()">
+                    <div class="card-indicator red pulse"></div>
+                    <span>TAKE CARD (CLICK)</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
